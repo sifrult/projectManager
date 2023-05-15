@@ -10,6 +10,7 @@ function Nav() {
             return (
                 <div>
                     <ul>
+                        <li><Link to='/'>Home</Link></li>
                         <li>Projects</li>
                         <li>Terminology</li>
                         <li>Favorites</li>
@@ -21,10 +22,11 @@ function Nav() {
             return (
                 <div>
                     <ul>
+                        <li><Link to='/'>Home</Link></li>
                         <li>Projects</li>
                         <li>Terminology</li>
                         <li>Login</li>
-                        <li>Sign Up</li>
+                        <li><Link to='/Signup'>Sign Up</Link> </li>
                     </ul>
                 </div>
             )

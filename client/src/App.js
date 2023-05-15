@@ -11,6 +11,7 @@ import Main from "./pages/Main";
 import Projects from "./pages/Projects";
 import Input from "./pages/Input";
 import Nav from "./components/Nav";
+import Signup from "./pages/Signup";
 
 const httpLink = createHttpLink({
     uri: '/graphql',
@@ -40,6 +41,7 @@ export default function App() {
                     <Route path='/' element={<><Nav /><Main /></>} />
                     <Route path='/Projects' element={<><Nav /><Projects /></>} />
                     <Route path='/Input' element={<><Nav /><Input /></>} />
+                    <Route path='/Signup' element={<><Nav /><Signup /></>} />
                 </Routes>
             </Router>
 

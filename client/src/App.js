@@ -1,53 +1,30 @@
-import React from "react";
-import {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    createHttpLink
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+// pages & components
+
+import Signup from './pages/Signup'
 import Main from "./pages/Main";
 import Projects from "./pages/Projects";
 import Input from "./pages/Input";
 import Nav from "./components/Nav";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
 
-const httpLink = createHttpLink({
-    uri: '/graphql',
-  });
+function App() {
 
-const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('id_token');
-    return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : '',
-      },
-    };
-  });
-
-const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-  });
-
-export default function App() {
-
-    return (
-        <ApolloProvider client={client}>
-            <Router>
-                <Routes>
-                    <Route path='/' element={<><Nav /><Main /></>} />
-                    <Route path='/Projects' element={<><Nav /><Projects /></>} />
-                    <Route path='/Input' element={<><Nav /><Input /></>} />
-                    <Route path='/Signup' element={<><Nav /><Signup /></>} />
-                    <Route path='/Login' element={<><Nav /><Login /></>} />
-                </Routes>
-            </Router>
-
-
-        </ApolloProvider>
-    )
+  return (
+    <div className="App">
+      <BrowserRouter>
+          <Routes>
+          <Route path='/' element={<><Nav /><Main /></>} />
+            <Route path='/projects' element={<><Nav /><Projects /></>} />
+            <Route path='/input' element={<><Nav /><Input /></>} />
+            <Route
+              path="/signup"
+              element={<><Nav /><Signup /></>}
+            />
+          </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
+
+export default App;

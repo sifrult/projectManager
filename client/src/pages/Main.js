@@ -6,7 +6,6 @@ function Main() {
 
     return (
         <>
-            <p>Dont forget to add the nav bar</p>
             <h1>Project Partner</h1>
             <p>This site helps you with your crochet or knit projects. Very easy to use. Can input your own project, or find one already uploaded.</p>
             <h2>Get started</h2>

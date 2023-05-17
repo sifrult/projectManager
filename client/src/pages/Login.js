@@ -1,69 +1,38 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
+// import { useState } from "react"
+// import { useLogin } from "../hooks/useLogin"
 
-function Login(props) {
-    const [formState, setFormState] = useState({ username: '', password: '' });
-    const [login, { error }] = useMutation(LOGIN);
+// const Login = () => {
+//   const [email, setEmail] = useState('')
+//   const [password, setPassword] = useState('')
+//   const {login, error, isLoading} = useLogin()
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const mutationResponse = await login({
-                variables: { username: formState.username, password: formState.password },
-            });
-            const token = mutationResponse.data.login.token;
-            Auth.login(token);
-        } catch (e) {
-            console.log(e);
-        }
-    };
+//   const handleSubmit = async (e) => {
+//     e.preventDefault()
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
+//     await login(email, password)
+//   }
 
-    return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div>
-                    <label htmlFor='username'>Username: </label>
-                    <input
-                        placeholder="username"
-                        name='username'
-                        type='username'
-                        id='username'
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='pwd'>Password: </label>
-                    <input
-                        placeholder="********"
-                        name='password'
-                        type='password'
-                        id='pwd'
-                        onChange={handleChange}
-                    />
-                </div>
-                {error ? (
-                    <div>
-                        <p>Username or password is incorrect</p>
-                    </div>
-                ) : null}
-                <div>
-                    <button type='submit' >Submit</button>
-                </div>
-            </form>
-        </div>
+//   return (
+//     <form className="login" onSubmit={handleSubmit}>
+//       <h3>Log In</h3>
 
-    );
-}
+//       <label>Email address:</label>
+//       <input
+//         type="email"
+//         onChange={(e) => setEmail(e.target.value)}
+//         value={email}
+//       />
+//       <label>Password:</label>
+//       <input
+//         type="password"
+//         onChange={(e) => setPassword(e.target.value)}
+//         value={password}
+//       />
 
-export default Login;
+//       <button disabled={isLoading}>Log in</button>
+//       {error && <div className="error">{error}</div>}
+//     </form>
+//   )
+// }
+
+// export default Login

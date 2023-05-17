@@ -1,43 +1,40 @@
-import React from "react";
-import Auth from "../utils/auth";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import { useAuthContext } from '../utils/useAuthContext'
 
-function Nav() {
+const Navbar = () => {
+  const { user } = useAuthContext()
 
-    function showNavigation() {
-        // Basically, show Home, Projects, Login/SingUp. If logged in, view SingOut, Favorites, Input Project
-        if (Auth.loggedIn()) {
-            return (
-                <div>
-                    <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li>Projects</li>
-                        <li>Terminology</li>
-                        <li>Favorites</li>
-                        <li>Logout</li>
-                    </ul>
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li>Projects</li>
-                        <li>Terminology</li>
-                        <li><Link to='/Login'>Login</Link></li>
-                        <li><Link to='/Signup'>Sign Up</Link> </li>
-                    </ul>
-                </div>
-            )
-        }
-    }
 
-    return (
+  return (
+    <header>
+      <div className="container">
         <nav>
-            {showNavigation()}
+          {user && (
+            <div>
+              <ul>
+                <li><Link to='/'>Home</Link></li>
+                <li>Projects</li>
+                <li>Terminology</li>
+                <li>Favorites</li>
+                <li>Logout</li>
+              </ul>
+            </div>
+          )}
+          {!user && (
+            <div>
+              <ul>
+                <li><Link to='/'>Home</Link></li>
+                <li>Projects</li>
+                <li>Terminology</li>
+                <li><Link to='/Login'>Login</Link></li>
+                <li><Link to='/signup'>Sign Up</Link> </li>
+              </ul>
+            </div>
+          )}
         </nav>
-    );
+      </div>
+    </header>
+  )
 }
 
-export default Nav;
+export default Navbar

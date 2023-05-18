@@ -10,7 +10,6 @@ export const useSignup = () => {
     setIsLoading(true)
     setError(null)
 
-    console.log('hello')
     const response = await fetch('/api/user/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -29,7 +28,6 @@ export const useSignup = () => {
       // update the auth context
       // dispatch({type: 'LOGIN', payload: json})
 
-      console.log('signed up')
       // update loading state
       setIsLoading(false)
     }

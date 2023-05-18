@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom'
-import { useAuthContext } from '../utils/useAuthContext'
+import { Link } from 'react-router-dom';
+import { useLogout } from '../utils/useLogout';
+import { useAuthContext } from '../utils/useAuthContext';
 
 const Navbar = () => {
+  const { logout } = useLogout()
   const { user } = useAuthContext()
 
+  const handleClick = () => {
+    logout()
+  }
 
   return (
     <header>
@@ -16,7 +21,7 @@ const Navbar = () => {
                 <li>Projects</li>
                 <li>Terminology</li>
                 <li>Favorites</li>
-                <li>Logout</li>
+                <li><button onClick={handleClick}>Logout</button></li>
               </ul>
             </div>
           )}

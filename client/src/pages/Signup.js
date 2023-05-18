@@ -1,16 +1,16 @@
-import { useState } from "react"
-import { useSignup } from "../utils/useSignup"
+import { useState } from "react";
+import { useSignup } from "../utils/useSignup";
 
 const Signup = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const {signup, error, isLoading} = useSignup()
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const {signup, error, isLoading} = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     await signup(username, password)
-  }
+  };
 
   return (
     <form className="signup" onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ const Signup = () => {
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}
     </form>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
